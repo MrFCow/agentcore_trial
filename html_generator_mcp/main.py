@@ -100,6 +100,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>"""
 
+
 async def parse_slides_with_llm(text: str, model) -> list[dict]:
     """Use LLM to parse slide text into structured data."""
     agent = Agent(model=model, system_prompt=SLIDE_PARSER_PROMPT)
@@ -141,7 +142,7 @@ async def generate_presentation(slide_text: str) -> str:
     """Generate HTML presentation from slide text.
 
     Input: Text block describing slides (e.g., "Slide 1: Title | Content...")
-    Output: Path to generated HTML file
+    Output: JSON with path and summary
     """
     model = create_model()
     slides = await parse_slides_with_llm(slide_text, model)
@@ -159,7 +160,14 @@ async def generate_presentation(slide_text: str) -> str:
     print(html)
     print(f"{'=' * 60}\n")
 
-    return str(output_path)
+    return json.dumps(
+        {
+            "path": str(output_path),
+            "filename": filename,
+            "slide_count": len(slides),
+            "preview": f"Generated {len(slides)} slides. File: {filename}",
+        }
+    )
 
 
 def main():
