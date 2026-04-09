@@ -1,0 +1,17 @@
+[project]
+name = "html-generator-mcp"
+version = "0.1.0"
+description = "FastMCP server to generate HTML presentations from slide text"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp>=2.0.0",
+    "strands-agents[openai]>=1.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+]
