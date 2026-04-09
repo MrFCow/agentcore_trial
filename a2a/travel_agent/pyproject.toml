@@ -1,0 +1,11 @@
+[project]
+name = "travel-agent"
+version = "0.1.0"
+description = "Travel orchestrator agent with A2A client"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "strands-agents[a2a]",
+    "bedrock-agentcore",
+    "openai",
+]
