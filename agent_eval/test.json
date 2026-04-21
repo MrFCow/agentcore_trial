@@ -1,0 +1,273 @@
+[
+  {
+    "case_name": "TC-001-search-flights",
+    "input": "Flights from SFO to Tokyo April 20",
+    "expected_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "actual_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-002-book-flight",
+    "input": "Book BA123 for John Chen, passport E12345678",
+    "expected_tools": [
+      "verify_availability",
+      "validate_passport",
+      "process_payment",
+      "issue_ticket",
+      "send_confirmation"
+    ],
+    "actual_tools": [],
+    "trajectory_score": 0.0,
+    "trajectory_reason": "Expected tools but none called",
+    "trajectory_passed": false,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-003-change-booking",
+    "input": "Change booking ABC to April 22",
+    "expected_tools": [
+      "get_booking",
+      "check_policy",
+      "check_availability",
+      "update_booking",
+      "send_confirmation"
+    ],
+    "actual_tools": [
+      "get_booking"
+    ],
+    "trajectory_score": 0.2,
+    "trajectory_reason": "Partial: ['get_booking']",
+    "trajectory_passed": false,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-004-cancel-booking",
+    "input": "Cancel booking ABC",
+    "expected_tools": [
+      "get_booking",
+      "check_policy",
+      "process_refund",
+      "cancel_ticket",
+      "send_confirmation"
+    ],
+    "actual_tools": [
+      "get_booking"
+    ],
+    "trajectory_score": 0.2,
+    "trajectory_reason": "Partial: ['get_booking']",
+    "trajectory_passed": false,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-005-edge-no-results",
+    "input": "Flights from XYZ to ABC on Jan 1",
+    "expected_tools": [
+      "list_routes"
+    ],
+    "actual_tools": [
+      "list_routes"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-006-search-jfk-lhr",
+    "input": "Show me flights from New York to London",
+    "expected_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "actual_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-007-search-lax-cdg",
+    "input": "Find flights from LAX to Paris on December 25",
+    "expected_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "actual_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-008-book-business-class",
+    "input": "I want to book a business class ticket from SFO to NRT next Friday",
+    "expected_tools": [
+      "search_flights",
+      "verify_availability",
+      "validate_passport",
+      "process_payment",
+      "issue_ticket"
+    ],
+    "actual_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "trajectory_score": 0.2,
+    "trajectory_reason": "Partial: ['search_flights']",
+    "trajectory_passed": false,
+    "output_score": 0.5,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-009-book-invalid-passport",
+    "input": "Book a flight from SFO to NRT, passport number ABC12345",
+    "expected_tools": [
+      "validate_passport"
+    ],
+    "actual_tools": [
+      "list_routes",
+      "search_flights"
+    ],
+    "trajectory_score": 0.0,
+    "trajectory_reason": "No tool match",
+    "trajectory_passed": false,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-010-check-change-policy",
+    "input": "What is the change policy for booking REF123?",
+    "expected_tools": [
+      "get_booking",
+      "check_policy"
+    ],
+    "actual_tools": [
+      "check_policy"
+    ],
+    "trajectory_score": 0.5,
+    "trajectory_reason": "Partial: ['check_policy']",
+    "trajectory_passed": false,
+    "output_score": 0.5,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-011-search-full-flight",
+    "input": "Check availability for BA178 economy class",
+    "expected_tools": [
+      "verify_availability"
+    ],
+    "actual_tools": [
+      "verify_availability"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-012-list-routes",
+    "input": "What routes do you have?",
+    "expected_tools": [
+      "list_routes"
+    ],
+    "actual_tools": [
+      "list_routes"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-013-unknown-command",
+    "input": "Tell me a joke",
+    "expected_tools": [],
+    "actual_tools": [],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "No tools expected",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-M1-incomplete-booking",
+    "input": "I want to fly to Tokyo",
+    "expected_tools": [
+      "list_routes"
+    ],
+    "actual_tools": [
+      "list_routes"
+    ],
+    "trajectory_score": 1.0,
+    "trajectory_reason": "Exact match",
+    "trajectory_passed": true,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-M2-booking-with-info",
+    "input": "Book a flight",
+    "expected_tools": [
+      "list_routes"
+    ],
+    "actual_tools": [],
+    "trajectory_score": 0.0,
+    "trajectory_reason": "Expected tools but none called",
+    "trajectory_passed": false,
+    "output_score": 1.0,
+    "output_passed": true,
+    "method": "manual"
+  },
+  {
+    "case_name": "TC-M3-cancel-after-policy",
+    "input": "Cancel my booking",
+    "expected_tools": [
+      "get_booking"
+    ],
+    "actual_tools": [],
+    "trajectory_score": 0.0,
+    "trajectory_reason": "Expected tools but none called",
+    "trajectory_passed": false,
+    "output_score": 0.5,
+    "output_passed": true,
+    "method": "manual"
+  }
+]
