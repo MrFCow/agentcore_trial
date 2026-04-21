@@ -1,3 +1,5 @@
 .opencode
 .ruff_cache
 opencode.json
+__pycache__
+.venv
